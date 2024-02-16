@@ -1,20 +1,35 @@
-
+//Global variables
 const myLibrary = [];
-
+const bookList=document.querySelector("div.books");
+const buttonAdd=document.querySelector("button.add");
+    //dialog variables
+const dialog=document.getElementById("pop-up");
+const form=document.querySelector("form")
+const inputTitle=document.getElementById("title");
+const inputAuthor=document.getElementById("author");
+const inputPages=document.getElementById("pages");
+const inputStatus=document.getElementById("status");
+const buttonSubmit=document.getElementById("submit");
+//Book constructor
 function Book(title="title",author="author",nbrPages=0,status=false){
     this.title=title;
     this.author=author;
     this.nbrPages=nbrPages;
     this.status=status;
 }
-
+//functions
+    //function that creates a book from dialog input
+function createBook(){
+    const newBook=new Book(inputTitle.value,inputAuthor.value,inputPages.value,inputStatus.checked)
+    return newBook;
+}
+    //function that adds book to library
 function addBookToLibrary(newBook){
     myLibrary.push(newBook);
+    displayBook(newBook);
 }
 
-//displaying a book
-const bookList=document.querySelector("div.books");
-
+    //function that displays a book on the page
 function displayBook(book){
     const div=document.createElement("div");
     div.classList.add("book");
@@ -41,14 +56,14 @@ function displayBook(book){
     bookList.insertAdjacentElement("afterbegin",div)
 }
 
-const book1=new Book("The Hobbit","J.R.R. Tolkien",295,true);
-const book2=new Book("To Kill a Mockingbird", "Harper Lee", 281, false);
-const book3=new Book("1984", "George Orwell", 328, false);
-const book4=new Book("Pride and Prejudice", "Jane Austen", 279, true);
-const book5=new Book("To the Lighthouse", "Virginia Woolf", 209, false);
-addBookToLibrary(book1);
-addBookToLibrary(book2);
-addBookToLibrary(book3);
-addBookToLibrary(book4);
-addBookToLibrary(book5);
-myLibrary.forEach(displayBook)
+//Event Listeners
+buttonAdd.addEventListener("click",()=>{
+    dialog.showModal();
+});
+buttonSubmit.addEventListener("click",()=>{
+    if(form.checkValidity()){
+        const newBook=createBook();
+        addBookToLibrary(newBook);
+        dialog.close();
+    }
+});
