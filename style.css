@@ -23,12 +23,12 @@ p{
     background-color: var(--color-mid);
     color: var(--color-white);
     display: flex;
-    height: 10vw;
+    height: 70px;
     justify-content: center;
     position: sticky;
 }
 h1{
-    font-size: 9vw;
+    font-size: min(3em,9vw);
     font-weight: 900;
 }
 /* DIALOG */
