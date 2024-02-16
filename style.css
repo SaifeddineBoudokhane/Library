@@ -4,6 +4,8 @@
     --color-light:#598392;
     --color-mid:#124559;
     --color-white:#EFF6E0;
+    --color-green:#09e360;
+    --color-red:#ef1010;
     --font-roboto: "Roboto", sans-serif;
 }
 *,*::after,*::before{
@@ -21,12 +23,12 @@ p{
     background-color: var(--color-mid);
     color: var(--color-white);
     display: flex;
-    height: 8vw;
+    height: 10vw;
     justify-content: center;
     position: sticky;
 }
 h1{
-    font-size: 6vw;
+    font-size: 9vw;
     font-weight: 900;
 }
 /* DIALOG */
@@ -58,13 +60,14 @@ input{
     margin: 0;
     width: 22px;
 }
-form button{
+#submit{
     background-color: var(--color-light);
     border: 0;
     font-weight: 700;
     width: 90%;
     padding: 9px 0;
     font-size: 25px;
+    cursor: pointer;
     color: var(--color-white);
 }
 /* ADD BOOK */
@@ -75,7 +78,7 @@ form button{
 .add{
     background-color: transparent;
     border: 0;
-    font-size: min(6vw,3em);
+    font-size: min(6vw,2em);
     font-weight: 900;
     margin-top: 10px;
     text-align: center;
@@ -84,12 +87,12 @@ form button{
 
 /* MAIN */
 .main{
-    padding: 5vw;
+    padding: min(5vw,30px);
 }
 .books{
     display: grid;
     gap: 15px;
-    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
 }
 .book{
     border: 2px solid var(--color-light);
@@ -111,4 +114,18 @@ form button{
     line-height: 1.2;
     font-weight: 500;
     text-wrap: wrap;overflow-wrap: break-word;
+}
+.book button{
+    width: 70%;
+    padding: 5px 0;
+    font-size: 1.4em;
+    border-radius: 15px;
+    font-weight: 800;
+    border: none;
+    color: var(--color-white);
+    background-color: var(--color-red);
+    cursor: pointer;
+}
+.book .read{
+    background-color: var(--color-green);
 }
